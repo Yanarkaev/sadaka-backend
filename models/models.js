@@ -30,6 +30,7 @@ const Product = sequelize.define("product", {
 
 const Category = sequelize.define("category", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  name: { type: DataTypes.STRING, unique: true, allowNull: false },
 });
 
 User.hasOne(Favorites);
@@ -46,7 +47,6 @@ FavoriteProduct.belongsTo(Product);
 
 Category.hasMany(Product);
 Product.belongsTo(Category);
-
 
 module.exports = {
   User,

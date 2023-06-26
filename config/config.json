@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "5632",
+    "database": "sadaka",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "5632",
+    "database": "sadaka",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "5632",
+    "database": "sadaka",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
