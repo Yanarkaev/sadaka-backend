@@ -7,7 +7,7 @@ const User = sequelize.define("user", {
   surname: { type: DataTypes.STRING },
   phone: { type: DataTypes.STRING, unique: true },
   password: { type: DataTypes.STRING },
-  image: { type: DataTypes.STRING },
+  image: { type: DataTypes.TEXT },
   role: { type: DataTypes.STRING },
 });
 
@@ -21,11 +21,15 @@ const FavoriteProduct = sequelize.define("favoriteProduct", {
 
 const Product = sequelize.define("product", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  name: { type: DataTypes.STRING, allowNull: false },
-  address: { type: DataTypes.STRING, allowNull: false },
-  description: { type: DataTypes.STRING, allowNull: false },
-  images: { type: DataTypes.ARRAY(DataTypes.STRING), allowNull: false },
-  views: { type: DataTypes.ARRAY(DataTypes.STRING), allowNull: false },
+  name: { type: DataTypes.TEXT, allowNull: false },
+  address: { type: DataTypes.TEXT, allowNull: false },
+  description: { type: DataTypes.TEXT, allowNull: false },
+  images: { type: DataTypes.ARRAY(DataTypes.TEXT), allowNull: false },
+  views: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: false,
+    defaultValue: [],
+  },
 });
 
 const Category = sequelize.define("category", {
