@@ -8,13 +8,27 @@ class CategoryController {
       const category = await Category.create({ name });
       return res.json(category);
     } catch (error) {
-      res.json({ error: error.parent.detail });
+      return next(ApiError.badRequest(error.message));
     }
   }
 
   async getAll(req, res) {
-    const all = await Category.findAll();
-    return res.json(all);
+    try {
+      const all = await Category.findAll();
+      return res.json(all);
+    } catch (error) {
+      return next(ApiError.badRequest(error.message));
+    }
+  }
+
+  async delete(req, res) {
+    try {
+      const { id } = req.params;
+      const category = await Category.destroy({ where: { id } });
+      return res.json("Категория удалена");
+    } catch (error) {
+      return next(ApiError.badRequest(error.message));
+    }
   }
 }
 

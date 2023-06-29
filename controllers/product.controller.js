@@ -32,7 +32,7 @@ class ProductController {
     }
   }
 
-  async getAll(req, res) {
+  async getAll(req, res, next) {
     try {
       const { name, categoryId, limit = 5, page = 1 } = req.query;
       let offset = page * limit - limit;
@@ -75,7 +75,7 @@ class ProductController {
     }
   }
 
-  async getOne(req, res) {
+  async getOne(req, res, next) {
     try {
       const { id } = req.params;
       const product = await Product.findOne({ where: { id } });
