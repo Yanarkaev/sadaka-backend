@@ -8,7 +8,7 @@ const User = sequelize.define("user", {
   phone: { type: DataTypes.STRING, unique: true },
   password: { type: DataTypes.STRING },
   image: { type: DataTypes.TEXT },
-  role: { type: DataTypes.STRING },
+  role: { type: DataTypes.STRING, defaultValue: "user" },
 });
 
 const Favorites = sequelize.define("favorites", {
