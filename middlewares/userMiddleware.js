@@ -11,7 +11,7 @@ module.exports = async function (req, res, next) {
       return res.status(401).json({ message: "Нет доступа" });
     }
 
-    // return res.json(user.id)
+    // return res.json(user.id) 
 
     next();
   } catch (error) {
