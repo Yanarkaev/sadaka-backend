@@ -12,7 +12,7 @@ class CategoryController {
     }
   }
 
-  async getAll(req, res) {
+  async getAll(res) {
     try {
       const all = await Category.findAll();
       return res.json(all);

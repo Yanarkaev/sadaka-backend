@@ -2,10 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const sequelize = require("./db");
 const app = express();
-const fileUpload = require("express-fileupload")
+const fileUpload = require("express-fileupload");
 const cors = require("cors");
 const router = require("./routes/index");
-const path = require("path")
+const path = require("path");
 
 const errorHadnler = require("./middlewares/errorHadnler");
 

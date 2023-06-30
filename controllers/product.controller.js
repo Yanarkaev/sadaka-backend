@@ -84,6 +84,16 @@ class ProductController {
       next(ApiError.badRequest(error.message));
     }
   }
+
+  async getByUser(req, res, next) {
+    try {
+      const { userId } = req.params;
+      const products = await Product.findAll({ where: { userId } });
+      return res.json(products);
+    } catch (error) {
+      next(ApiError.badRequest(error.message));
+    }
+  }
 }
 
 module.exports = new ProductController();
