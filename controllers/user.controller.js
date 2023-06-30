@@ -93,11 +93,11 @@ class UserController {
   async auth(req, res, next) {
     try {
       const token = generateJwt(
-        user.id,
-        user.name,
-        user.surname,
-        user.phone,
-        user.role
+        req.user.id,
+        req.user.name,
+        req.user.surname,
+        req.user.phone,
+        req.user.role
       );
 
       return res.json({ token });
