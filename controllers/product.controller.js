@@ -1,5 +1,6 @@
 const uuid = require("uuid");
 const path = require("path");
+const jwt = require("jsonwebtoken");
 const ApiError = require("../error/ApiError");
 const { Sequelize } = require("../db");
 const { Product } = require("../models/models");
@@ -79,6 +80,18 @@ class ProductController {
     try {
       const { id } = req.params;
       const product = await Product.findOne({ where: { id } });
+
+      const signed = req.headers.authorization;
+
+      if (signed && signed.split(" ")[0] === "Bearer" && signed.split(" ")[1]) {
+        let decoded = jwt.verify(signed.split(" ")[1], process.env.SECRET_JWT);
+
+        if (!product.views.includes(decoded.id)) {
+          product.views = [...product.views, decoded.id];
+          await product.save();
+        }
+      }
+
       return res.json(product);
     } catch (error) {
       next(ApiError.badRequest(error.message));

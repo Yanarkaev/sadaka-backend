@@ -26,7 +26,7 @@ const Product = sequelize.define("product", {
   description: { type: DataTypes.TEXT, allowNull: false },
   images: { type: DataTypes.ARRAY(DataTypes.TEXT), allowNull: false },
   views: {
-    type: DataTypes.ARRAY(DataTypes.STRING),
+    type: DataTypes.ARRAY(DataTypes.INTEGER),
     allowNull: false,
     defaultValue: [],
   },
